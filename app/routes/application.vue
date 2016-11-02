@@ -18,7 +18,7 @@
               <p class="panel-heading">
                 Adopt A Pupper
               </p>
-              <div class="panel-block">
+              <div class="panel-block" v-for="item in puppies">
                 <div class="media">
                   <div class="media-left">
                     <p class="image is-64x64">
@@ -27,6 +27,7 @@
                   </div>
                   <div class="media-right">
                     <h2>Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
                   </div>
                 </div>
               </div>
@@ -47,7 +48,7 @@
 export default {
     data() {
         return {
-
+          puppies: [''],
         };
     },
 
