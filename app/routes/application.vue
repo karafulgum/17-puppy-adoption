@@ -26,7 +26,62 @@
                     </p>
                   </div>
                   <div class="media-right">
-                    <h2>Pupper Name Here</h2>
+                    <h2 class="subtitle">Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-64x64">
+                      <img src="http://placehold.it/128x128">
+                    </p>
+                  </div>
+                  <div class="media-right">
+                    <h2 class="subtitle">Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-64x64">
+                      <img src="http://placehold.it/128x128">
+                    </p>
+                  </div>
+                  <div class="media-right">
+                    <h2 class="subtitle">Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-64x64">
+                      <img src="http://placehold.it/128x128">
+                    </p>
+                  </div>
+                  <div class="media-right">
+                    <h2 class="subtitle">Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-64x64">
+                      <img src="http://placehold.it/128x128">
+                    </p>
+                  </div>
+                  <div class="media-right">
+                    <h2 class="subtitle">Pupper Name Here</h2>
+                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-64x64">
+                      <img src="http://placehold.it/128x128">
+                    </p>
+                  </div>
+                  <div class="media-right">
+                    <h2 class="subtitle">Pupper Name Here</h2>
                     <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
                   </div>
                 </div>
@@ -34,8 +89,11 @@
             </nav>
           </div>
           <div class="column is-8">
-            <router-view>
-
+            <router-view
+            :puppies="puppies"
+            :api-url="apiUrl"
+            @addPuppy="addPuppy"
+            @updatePuppy="updatePuppy">
             </router-view>
           </div>
         </div>

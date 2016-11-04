@@ -1,4 +1,5 @@
-$c-primary: hsl(217, 71%, 53%);
+$blue: hsl(217, 71%, 53%);
+$primary: $blue;
 
 // @import 'yoga-sass/assets/yoga';
 // @import 'normalize-css/normalize';
@@ -10,7 +11,7 @@ $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 @import 'reset';
 
 .nav {
-  background: $c-primary;
+  background: $primary;
 
   .nav-item a, a.nav-item {
     color: $white-bis;
@@ -20,4 +21,10 @@ $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 .is-brand {
   font-size: 1.2rem;
   font-weight: normal;
+}
+
+.media-right {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
 }
