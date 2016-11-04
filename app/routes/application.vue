@@ -18,71 +18,16 @@
               <p class="panel-heading">
                 Adopt A Pupper
               </p>
-              <div class="panel-block" v-for="item in puppies">
+              <div class="panel-block" v-for="puppy in puppies">
                 <div class="media">
                   <div class="media-left">
                     <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
+                      <img :src="puppy.image_url">
                     </p>
                   </div>
                   <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left">
-                    <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
-                    </p>
-                  </div>
-                  <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left">
-                    <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
-                    </p>
-                  </div>
-                  <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left">
-                    <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
-                    </p>
-                  </div>
-                  <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left">
-                    <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
-                    </p>
-                  </div>
-                  <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
-                  </div>
-                </div>
-                <div class="media">
-                  <div class="media-left">
-                    <p class="image is-64x64">
-                      <img src="http://placehold.it/128x128">
-                    </p>
-                  </div>
-                  <div class="media-right">
-                    <h2 class="subtitle">Pupper Name Here</h2>
-                    <router-link :to="{ name: 'detail', params: {id: item.id}}">Read More</router-link>
+                    <h2 class="subtitle">{{ puppy.name }}</h2>
+                    <router-link :to="{ name: 'new', params: {id: puppy.id}}">Read More</router-link>
                   </div>
                 </div>
               </div>
@@ -111,6 +56,10 @@ export default {
           puppies: [''],
           apiUrl: apiUrl,
         };
+    },
+
+    mounted() {
+      this.getData();
     },
 
     methods: {
