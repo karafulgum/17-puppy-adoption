@@ -103,15 +103,33 @@
 </template>
 
 <script>
+const apiUrl = 'https://tiy-tn-class-api-fall-16.herokuapp.com/puppies/ryan';
+
 export default {
     data() {
         return {
           puppies: [''],
+          apiUrl: apiUrl,
         };
     },
 
     methods: {
+      getData() {
+        fetch(apiUrl)
+        .then((r) => r.json())
+                .then((puppies) => {
+                    this.puppies = puppies;
+                });
+      },
+      addPuppy() {
 
+      },
+      removePuppy() {
+
+      },
+      updatePuppy() {
+
+      },
     },
 };
 </script>
