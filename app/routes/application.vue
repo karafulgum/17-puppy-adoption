@@ -48,7 +48,7 @@
 </template>
 
 <script>
-const apiUrl = 'https://tiy-tn-class-api-fall-16.herokuapp.com/puppies/ryan';
+const apiUrl = 'https://tiy-tn-class-api-fall-16.herokuapp.com/puppies/kara';
 
 export default {
     data() {
@@ -66,13 +66,26 @@ export default {
       getData() {
         fetch(apiUrl)
         .then((r) => r.json())
-                .then((puppies) => {
-                    this.puppies = puppies;
-                });
+        .then((puppies) => {
+          this.puppies = puppies;
+        });
       },
-      addPuppy() {
+
+      addPuppy(input) {
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify(input),
+        })
+        .then((r) => r.json())
+        .then((newPup) => {
+          this.puppies = [...this.puppies, newPup];
+
+          this.$router.push({ name: 'index' });
+        });
 
       },
+
       removePuppy() {
 
       },

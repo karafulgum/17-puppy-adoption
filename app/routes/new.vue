@@ -39,6 +39,11 @@
       <p class="control">
         <textarea class="textarea" type="text" v-model="formValues.description" id="puppy-description"></textarea>
       </p>
+
+      <p class="control">
+        <a href="/" class="button">Back</a>
+        <button class="button is-primary">Submit</button>
+      </p>
     </form>
   </div>
 </template>
@@ -60,7 +65,9 @@ export default {
   },
 
   methods: {
-
+    savePuppy() {
+      this.$emit('addPuppy', this.formValues);
+    },
   },
 };
 </script>
