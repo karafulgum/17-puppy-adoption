@@ -21,13 +21,13 @@
               <div class="panel-block" v-for="puppy in puppies">
                 <div class="media">
                   <div class="media-left">
-                    <p class="image is-64x64">
+                    <figure class="image is-64x64 is-square">
                       <img :src="puppy.image_url">
-                    </p>
+                    </figure>
                   </div>
                   <div class="media-right">
                     <h2 class="subtitle">{{ puppy.name }}</h2>
-                    <router-link :to="{ name: 'new', params: {id: puppy.id}}">Read More</router-link>
+                    <router-link :to="{ name: 'detail', params: {id: puppy.id}}">Read More</router-link>
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@ const apiUrl = 'https://tiy-tn-class-api-fall-16.herokuapp.com/puppies/kara';
 export default {
     data() {
         return {
-          puppies: [''],
+          puppies: [],
           apiUrl: apiUrl,
         };
     },

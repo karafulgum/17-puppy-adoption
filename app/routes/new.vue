@@ -25,6 +25,11 @@
         </span>
       </p>
 
+      <label class="label" for="puppy-breed">Color</label>
+      <p class="control">
+        <input class="input" type="text" v-model="formValues.color" id="puppy-color">
+      </p>
+
       <label class="label" for="puppy-breed">Breed</label>
       <p class="control">
         <input class="input" type="text" v-model="formValues.breed" id="puppy-breed">
