@@ -45,7 +45,7 @@
 
       <p class="control">
         <a href="/" class="button">Back</a>
-        <button class="button is-primary">Submit</button>
+        <button class="button is-primary">Save</button>
       </p>
     </form>
   </div>

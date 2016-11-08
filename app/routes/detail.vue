@@ -45,18 +45,10 @@
       <p>{{ puppy. description }}</p>
     </div>
 
-    <div class="control is-grouped">
-      <p class="control">
-        <a class="button is-primary is-outlined" @click="removePuppy">
-          <span class="icon is-small">
-            <i class="fa fa-times"></i>
-          </span>
-            <span>Delete Puppy</span>
-        </a>
-      </p>
-      <p class="control">
-        <router-link class="button is-primary is-outlined" :to="{ name: 'update', params: { id: puppy.id }}">Edit Puppy</router-link>
-      </p>
+    <h1 class="title has-text-centered">
+        <a class="button is-primary" @click="removePuppy">Remove Puppy</a>
+        <router-link class="button is-primary" :to="{ name: 'update', params: { id: puppy.id }}">Edit Listing</router-link>
+      </h1>
     </div>
   </div>
 
