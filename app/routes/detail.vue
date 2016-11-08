@@ -47,10 +47,15 @@
 
     <div class="control is-grouped">
       <p class="control">
-        <button class="button is-primary is-outlined" @click="removePuppy">Delete Puppy</button>
+        <a class="button is-primary is-outlined" @click="removePuppy">
+          <span class="icon is-small">
+            <i class="fa fa-times"></i>
+          </span>
+            <span>Delete Puppy</span>
+        </a>
       </p>
       <p class="control is-right">
-        <button class="button is-primary is-outlined">Edit Puppy</button>
+        <button class="button is-primary is-outlined" :to="{ name: 'update', params: { id: puppy.id }}">Edit Puppy</button>
       </p>
     </div>
   </div>
@@ -72,6 +77,11 @@ export default {
     this.getData();
   },
 
+  watch: {
+    '$route': 'getData',
+    'puppies': 'getData',
+  },
+
   methods: {
     getData() {
       fetch(`${this.apiUrl}/${this.$route.params.id}`)
@@ -82,7 +92,7 @@ export default {
     },
 
     update() {
-      this.$emit(this.$route.params.id, { adopted: true});
+      this.$emit('updatePuppy', this.puppy.id, { adopted: true});
     },
 
     removePuppy() {
