@@ -64,42 +64,43 @@
 
 <script>
 export default {
-  props: ['apiUrl'],
+    props: ['findPuppy', 'puppies'],
 
-  data() {
-    return {
-      puppy: {},
-      id: this.$route.params.id,
-    };
-  },
-
-  mounted() {
-    this.getData();
-  },
-
-  watch: {
-    '$route': 'getData',
-    'puppies': 'getData',
-  },
-
-  methods: {
-    getData() {
-      fetch(`${this.apiUrl}/${this.$route.params.id}`)
-      .then((r) => r.json())
-      .then((puppy) => {
-        this.puppy = puppy;
-      });
+    data() {
+        return {
+            puppy: {},
+            id: this.$route.params.id,
+        };
     },
 
-    update() {
-      this.$emit('updatePuppy', this.puppy.id, { adopted: true});
+    mounted() {
+        this.getData();
     },
 
-    removePuppy() {
-      if (confirm('Are you sure you want to delete this puppy?')) {
-        this.$emit('removePuppy', this.puppy);
-      }
-    }
-  },
+    watch: {
+        '$route': 'getData',
+        'puppies': 'getData',
+    },
+
+    methods: {
+        getData() {
+            this.findPuppy(this.$route.params.id)
+                .then((puppy) => {
+                    this.puppy = puppy;
+                });
+        },
+
+        update() {
+            this.$emit('updatePuppy', this.puppy.id, {
+                adopted: true
+            });
+        },
+
+        removePuppy() {
+            if (confirm('Are you sure you want to delete this puppy?')) {
+                this.$emit('removePuppy', this.puppy);
+            }
+        },
+    },
 };
 </script>

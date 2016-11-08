@@ -37,6 +37,7 @@
             <router-view
             :puppies="puppies"
             :api-url="apiUrl"
+            :find-puppy="findPuppy"
             @addPuppy="addPuppy"
             @removePuppy="removePuppy"
             @updatePuppy="updatePuppy">
@@ -90,7 +91,17 @@ export default {
 
           this.$router.push({ name: 'index' });
         });
+      },
 
+      findPuppy(id) {
+        const puppy = this.puppies.find((puppy) => puppy.id === id);
+
+        if (puppy) {
+          return Promise.resolve(puppy);
+        } else {
+          return fetch(`${this.apiUrl}/${id}`)
+          .then((r) =>r.json());
+        }
       },
 
       removePuppy(puppy) {
