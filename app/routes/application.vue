@@ -21,7 +21,7 @@
               <div class="panel-block" v-for="puppy in puppies">
                 <div class="media">
                   <div class="media-left">
-                    <figure class="image is-64x64 is-square">
+                    <figure class="image is-64x64">
                       <img :src="puppy.image_url">
                     </figure>
                   </div>
@@ -48,13 +48,19 @@
 </template>
 
 <script>
+import Index from './index.vue';
 const apiUrl = 'https://tiy-tn-class-api-fall-16.herokuapp.com/puppies/kara';
 
 export default {
+  components: {
+    Index,
+  },
+
     data() {
         return {
           puppies: [],
           apiUrl: apiUrl,
+          path: window.location.pathname,
         };
     },
 
@@ -74,7 +80,7 @@ export default {
       addPuppy(input) {
         fetch(apiUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(input),
         })
         .then((r) => r.json())
@@ -86,11 +92,32 @@ export default {
 
       },
 
-      removePuppy() {
-
+      removePuppy(puppy) {
+        fetch(`${apiUrl}/${puppy.id}`, {
+          method: 'DELETE',
+        })
+        .then(() => {
+          this.puppies = this.puppies.filter((old) => old.id !== puppy.id);
+          this.$router.push({ name: 'index' });
+        });
       },
-      updatePuppy() {
 
+      updatePuppy(id, updates) {
+        fetch(`${apiUrl}/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updates),
+        })
+        .then((r) => r.json())
+        .then((updatedPuppy) => {
+          this.puppies = this.puppies.map((old) => {
+            if(old.id === updatedPuppy.id) {
+              return updatedPuppy;
+            }
+
+            return old;
+          })
+        });
       },
     },
 };

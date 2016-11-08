@@ -1,9 +1,22 @@
 <template lang="html">
   <div class="">
-    <h1 class="title has-text-centered">{{ puppy.name }}</h1>
-    <div class="columns">
+    <h1 class="title has-text-centered">{{ puppy.name }}
+      <a class="button is-primary" @click="update" v-if="!puppy.adopted">
+        <span class="icon is-small">
+          <i class="fa fa-paw" aria-hidden="true">
+        </span>
+        <span>Adopt Me</span>
+      </a>
+      <a class="button is-success" v-if="puppy.adopted">
+        <span class="icon is-small">
+          <i class="fa fa-paw" aria-hidden="true">
+        </span>
+        <span>I'm adopted!</span>
+      </a>
+    </h1>
+  <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <figure class="image is-square">
+        <figure class="image">
           <img :src="puppy.image_url">
         </figure>
       </div>
@@ -31,7 +44,17 @@
       <h3>About Me</h3>
       <p>{{ puppy. description }}</p>
     </div>
+
+    <div class="control is-grouped">
+      <p class="control">
+        <button class="button is-primary is-outlined" @click="removePuppy">Delete Puppy</button>
+      </p>
+      <p class="control is-right">
+        <button class="button is-primary is-outlined">Edit Puppy</button>
+      </p>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -57,6 +80,16 @@ export default {
         this.puppy = puppy;
       });
     },
+
+    update() {
+      this.$emit(this.$route.params.id, { adopted: true});
+    },
+
+    removePuppy() {
+      if (confirm('Are you sure you want to delete this puppy?')) {
+        this.$emit('removePuppy', this.puppy);
+      }
+    }
   },
 };
 </script>
