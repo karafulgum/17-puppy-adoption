@@ -1,4 +1,4 @@
-<!-- <template lang="html">
+<template lang="html">
   <div class="">
     <h2 class="title">Update the puppy's info</h2>
     <form @submit.prevent="savePuppy">
@@ -52,21 +52,13 @@
 </template>
 
 <script>
-props: ['apiUrl'],
 
 export default {
+  props: ['findPuppy', 'puppies'],
   data() {
     return {
       puppy: {},
-      formValues: {
-        name: '',
-        age: '',
-        sex: '',
-        color: '',
-        breed: '',
-        image_url: '',
-        description: '',
-      },
+      id: this.$route.params.id,
     };
   },
 
@@ -74,18 +66,29 @@ export default {
     this.getData();
   },
 
+  watch: {
+      '$route': 'getData',
+      'puppies': 'getData',
+  },
+
   methods: {
     getData() {
-      fetch(apiUrl)
-      .then((r) => r.json())
-      .then((puppies) => {
-        this.puppies = puppies;
-      });
+      this.findPuppy(this.$route.params.id)
+          .then((puppy) => {
+              this.puppy = puppy;
+          });
     },
+
+    update() {
+        this.$emit('updatePuppy', this.puppy.id, {
+            adopted: true
+        });
+    },
+
     savePuppy() {
       this.$emit(this.puppy.id, this.formValues);
       this.$router.push({ name: 'index '});
     },
   },
 };
-</script> -->
+</script>
