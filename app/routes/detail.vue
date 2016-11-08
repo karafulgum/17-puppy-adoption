@@ -54,8 +54,8 @@
             <span>Delete Puppy</span>
         </a>
       </p>
-      <p class="control is-right">
-        <button class="button is-primary is-outlined" :to="{ name: 'update', params: { id: puppy.id }}">Edit Puppy</button>
+      <p class="control">
+        <router-link class="button is-primary is-outlined" :to="{ name: 'update', params: { id: puppy.id }}">Edit Puppy</router-link>
       </p>
     </div>
   </div>

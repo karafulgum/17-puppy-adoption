@@ -54,11 +54,11 @@
 <script>
 
 export default {
-  props: ['findPuppy', 'puppies'],
+  props: ['findPuppy'],
   data() {
     return {
       puppy: {},
-      id: this.$route.params.id,
+      formValues: {},
     };
   },
 
@@ -66,28 +66,18 @@ export default {
     this.getData();
   },
 
-  watch: {
-      '$route': 'getData',
-      'puppies': 'getData',
-  },
-
   methods: {
     getData() {
       this.findPuppy(this.$route.params.id)
           .then((puppy) => {
+            this.formValues = { ...puppy };
               this.puppy = puppy;
           });
     },
 
-    update() {
-        this.$emit('updatePuppy', this.puppy.id, {
-            adopted: true
-        });
-    },
-
     savePuppy() {
-      this.$emit(this.puppy.id, this.formValues);
-      this.$router.push({ name: 'index '});
+      this.$emit('updatePuppy', this.puppy.id, this.formValues);
+      this.$router.push({ name: 'index'});
     },
   },
 };
