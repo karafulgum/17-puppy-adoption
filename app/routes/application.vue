@@ -38,6 +38,7 @@
             :puppies="puppies"
             :api-url="apiUrl"
             @addPuppy="addPuppy"
+            @removePuppy="removePuppy"
             @updatePuppy="updatePuppy">
             </router-view>
           </div>
