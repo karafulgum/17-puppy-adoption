@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="animated slideInRight">
     <h1 class="title has-text-centered">{{ puppy.name }}
       <a class="button is-primary" @click="update" v-if="!puppy.adopted">
         <span class="icon is-small">
