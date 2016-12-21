@@ -1,6 +1,33 @@
+$blue: hsl(217, 71%, 53%);
+$primary: $blue;
+
 // @import 'yoga-sass/assets/yoga';
 // @import 'normalize-css/normalize';
 
-// $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
+@import 'bulma/bulma';
+$fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 @import 'font-awesome/scss/font-awesome';
 @import 'box-sizing';
+@import 'reset';
+
+.nav {
+  background: $primary;
+
+  .nav-item a, a.nav-item {
+    color: $white-bis;
+  }
+}
+
+.is-brand {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.content {
+  border-top: 0.1rem solid #ededed;
+  padding-top: 1rem;
+}
+
+.fa-paw {
+  padding-right: 0.3rem;
+}
